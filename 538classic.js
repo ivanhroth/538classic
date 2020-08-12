@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
     }
 
     let probToColorIntensity = prob => {
-        return Math.floor((1 - prob) * 245)
+        let intensity = Math.floor((1 - prob) * 500);
+        return intensity <= 255 ? intensity : 255;
     }
 
     for(let i=0; i<50; i++){
