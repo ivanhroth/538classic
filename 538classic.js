@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
     let probToColorIntensity = prob => {
         let intensity = Math.floor((1 - prob) * 500);
         return intensity <= 255 ? intensity : 255;
+        // uses the probability as a % of 500 and then cuts it off at 255 (rather than just taking a % of 255) in order to approximate
+        // 538's soothing visual aesthetic of pale chloropleths that fade to white when the odds are close to 50%.
     }
 
     for(let i=0; i<50; i++){
