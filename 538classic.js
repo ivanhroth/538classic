@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
             document.getElementById("state-stats").style.display = "block";
             document.getElementById("state-trump-prob").innerHTML = `${Math.round(winProbs[stateName] * 1000) / 10}%`;
             document.getElementById("state-biden-prob").innerHTML = `${Math.round((1 - winProbs[stateName]) * 1000) / 10}%`;
+            document.getElementById("state-name").innerHTML = stateName;
         }
     })
 })
