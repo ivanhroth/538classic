@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
             let trumpWinProb = winProbs[stateNameList[i]];
             if (!document.getElementById(stateAbbrs[i])) continue;
             else if (trumpWinProb > 0.5) setStateColor(stateAbbrs[i], `rgb(255, ${probToColorIntensity(trumpWinProb)}, ${probToColorIntensity(trumpWinProb)})`);
-            else if (winProbs[stateNameList[i]] < 0.5) setStateColor(stateAbbrs[i], `rgb(${probToColorIntensity(1 - trumpWinProb)}, ${probToColorIntensity(1 - trumpWinProb)}, 255)`);
+            else if (trumpWinProb < 0.5) setStateColor(stateAbbrs[i], `rgb(${probToColorIntensity(1 - trumpWinProb)}, ${probToColorIntensity(1 - trumpWinProb)}, 255)`);
         }
     }).catch(err => console.log(err));
 
