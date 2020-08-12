@@ -1,0 +1,36 @@
+body {
+    background-color: cornsilk;
+}
+
+.GOP {
+    color: red;
+}
+
+.Dem {
+    color: blue;
+}
+
+#EV h3 {
+    display: inline;
+    border: 1px solid black;
+    background-color: white;
+}
+
+#state-stats {
+    background-color: white;
+    border: 1px solid black;
+    display: none;
+    max-width: 50%;
+    position: relative;
+    top: 10px;
+}
+
+a {
+    color: grey;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
