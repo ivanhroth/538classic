@@ -62,8 +62,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         if (event.target.tagName !== "path"){
             document.getElementById("state-stats").style.display = "none";
         } else {
-            let stateAbbr = event.target.getAttribute("id");
-            let stateName = stateNameList[stateAbbrs.indexOf(stateAbbr)];
+            let stateName = event.target.getAttribute("data-name");
             document.getElementById("state-page-link").setAttribute("href", `https://projects.fivethirtyeight.com/2020-election-forecast/${stateName.split(" ").join("-").toLowerCase()}/`);
             document.getElementById("state-stats").style.display = "block";
             document.getElementById("state-trump-prob").innerHTML = `${Math.round(winProbs[stateName] * 1000) / 10}%`;
