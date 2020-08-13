@@ -23,6 +23,17 @@ document.addEventListener("DOMContentLoaded", ()=> {
         // 538's soothing visual aesthetic of pale chloropleths that fade to white when the odds are close to 50%.
     }
 
+    let hideStateBox = () => {
+        document.getElementById("state-stats").style.display = "none";
+    }
+
+    let showStateBox = stateName => {
+        document.getElementById("state-stats").style.display = "block";
+        document.getElementById("state-trump-prob").innerHTML = `${Math.round(winProbs[stateName] * 1000) / 10}%`;
+        document.getElementById("state-biden-prob").innerHTML = `${Math.round((1 - winProbs[stateName]) * 1000) / 10}%`;
+        document.getElementById("state-name").innerHTML = stateName;
+    }
+
     for(let i=0; i<50; i++){
         document.getElementById(stateAbbrs[i]).setAttribute("title", stateNameList[i]);
     }
@@ -60,19 +71,22 @@ document.addEventListener("DOMContentLoaded", ()=> {
         }
     }).catch(err => console.log(err));
 
-    document.addEventListener("click", event => {
+     document.addEventListener("mouseover", event => {
         if (event.target.tagName !== "path" && !event.target.classList.contains("district")){
-            document.getElementById("state-stats").style.display = "none";
+            hideStateBox();
         } else {
+            let stateName = event.target.getAttribute("data-name");
+            showStateBox(stateName);
+        }
+    })
+
+    document.addEventListener("click", event => {
+        if (event.target.tagName === "path" || event.target.classList.contains("district")){
             let stateName = event.target.getAttribute("data-name");
             let urlStateName = stateName.toLowerCase();
             if (urlStateName.includes("-")) urlStateName = urlStateName.split("ne").join("nebraska").split("me").join("maine");
             urlStateName = urlStateName.split(" ").join("-");
-            document.getElementById("state-page-link").setAttribute("href", `https://projects.fivethirtyeight.com/2020-election-forecast/${urlStateName}/`);
-            document.getElementById("state-stats").style.display = "block";
-            document.getElementById("state-trump-prob").innerHTML = `${Math.round(winProbs[stateName] * 1000) / 10}%`;
-            document.getElementById("state-biden-prob").innerHTML = `${Math.round((1 - winProbs[stateName]) * 1000) / 10}%`;
-            document.getElementById("state-name").innerHTML = stateName;
+            open(`https://projects.fivethirtyeight.com/2020-election-forecast/${urlStateName}/`);
         }
     })
 })
