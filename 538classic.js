@@ -65,7 +65,10 @@ document.addEventListener("DOMContentLoaded", ()=> {
             document.getElementById("state-stats").style.display = "none";
         } else {
             let stateName = event.target.getAttribute("data-name");
-            document.getElementById("state-page-link").setAttribute("href", `https://projects.fivethirtyeight.com/2020-election-forecast/${stateName.split(" ").join("-").toLowerCase()}/`);
+            let urlStateName = stateName.toLowerCase();
+            if (urlStateName.includes("-")) urlStateName = urlStateName.split("ne").join("nebraska").split("me").join("maine");
+            urlStateName = urlStateName.split(" ").join("-");
+            document.getElementById("state-page-link").setAttribute("href", `https://projects.fivethirtyeight.com/2020-election-forecast/${urlStateName}/`);
             document.getElementById("state-stats").style.display = "block";
             document.getElementById("state-trump-prob").innerHTML = `${Math.round(winProbs[stateName] * 1000) / 10}%`;
             document.getElementById("state-biden-prob").innerHTML = `${Math.round((1 - winProbs[stateName]) * 1000) / 10}%`;
