@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", ()=> {
-    const stateNameList = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia',
-    'Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa',
-    'Kansas','Kentucky','Louisiana','ME-1','ME-2','Maine','Maryland','Massachusetts','Michigan',
-    'Minnesota','Mississippi','Missouri','Montana','NE-1','NE-2','NE-3','Nebraska','Nevada','New Hampshire','New Jersey',
-    'New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania',
-    'Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington',
-    'West Virginia','Wisconsin','Wyoming'].reverse();
-    const stateAbbrs = [ 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME-1', 'ME-2',
-    'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE-1', 'NE-2', 'NE-3', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA',
-     'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'].reverse();
+    const stateNameList = ['Wyoming','Wisconsin','West Virginia','Washington',
+    'Virginia','Vermont','Utah','Texas','Tennessee','South Dakota','South Carolina','Rhode Island',
+    'Pennsylvania','Oregon','Oklahoma','Ohio','North Dakota','North Carolina','New York','New Mexico','New Jersey',
+    'New Hampshire','Nevada','Nebraska','NE-3','NE-2','NE-1','Montana','Missouri','Mississippi','Minnesota',
+    'Michigan','Massachusetts','Maryland','Maine','ME-2','ME-1','Louisiana','Kentucky','Kansas','Iowa','Indiana',
+    'Illinois','Idaho','Hawaii','Georgia','Florida','District of Columbia','Delaware','Connecticut','Colorado',
+    'California','Arkansas','Arizona','Alaska','Alabama'];
+    const stateAbbrs = [ 'WY','WI','WV','WA','VA','VT','UT','TX','TN','SD','SC','RI','PA','OR','OK',
+    'OH','ND','NC','NY','NM','NJ','NH','NV','NE','NE-3','NE-2','NE-1','MT','MO','MS','MN','MI','MA','MD',
+    'ME','ME-2','ME-1','LA','KY','KS','IA','IN','IL','ID','HI','GA','FL','DC','DE','CT','CO','CA','AR','AZ','AK','AL'];
 
     let setStateColor = (abbr, color) => {
         document.getElementById(abbr).style.fill = color;

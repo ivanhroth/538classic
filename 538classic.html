@@ -8,18 +8,21 @@
     <title>538 Classic</title>
 </head>
 <body>
+<div id="left-column">
+    <div id="state-stats">
+        <h4 id="state-name"></h4>
+        <p>Chance of <span class="GOP">Trump</span> win: <span id="state-trump-prob" class="GOP"></span></p>
+        <p>Chance of <span class="Dem">Biden</span> win: <span id="state-biden-prob" class = "Dem"></span></p>
+        <a id="state-page-link" href="">538 model page</a>
+    </div>
+</div>
+<div id="center-column">
 <div>
     <h2><span id="trump-prob" class="GOP"></span> chance of <span class="GOP">Trump</span>, <span id="biden-prob" class="Dem"></span> chance of <span class="Dem">Biden</span></h2>
     <div id="EV">
     <h3>Forecasted <span class="GOP">Trump</span> EVs: <span id="trump-ev" class="GOP"></span></h3>
     <h3>Forecasted <span class="Dem">Biden</span> EVs: <span id="biden-ev" class="Dem"></span></h3>
     </div>
-</div>
-<div id="state-stats">
-    <h4 id="state-name"></h4>
-    <p>Chance of <span class="GOP">Trump</span> win: <span id="state-trump-prob" class="GOP"></span></p>
-    <p>Chance of <span class="Dem">Biden</span> win: <span id="state-biden-prob" class = "Dem"></span></p>
-    <a id="state-page-link" href="">538 model page</a>
 </div>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -461,5 +464,6 @@
 <div id="NE-2"></div>
 <div id="NE-3"></div>
 <a href="https://projects.fivethirtyeight.com/2020-election-forecast/">FiveThirtyEight's national forecast on their website</a>
+</div>
 </body>
 </html>

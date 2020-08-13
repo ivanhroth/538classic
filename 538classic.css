@@ -1,5 +1,18 @@
 body {
     background-color: cornsilk;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+#left-column{
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+
+#right-column {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
 }
 
 .GOP {
