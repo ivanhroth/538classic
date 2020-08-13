@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         document.getElementById("biden-prob").innerHTML = `${Math.round(1000 * bidenWinProb) / 10}%`;
         document.getElementById("trump-ev").innerHTML = Math.round(currentNat[14]);
         document.getElementById("biden-ev").innerHTML = Math.round(currentNat[15]);
-    })
+    }).catch(err => console.log(err));
 
     let winProbs = {};
 
