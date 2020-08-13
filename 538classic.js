@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
     'ME','ME-2','ME-1','LA','KY','KS','IA','IN','IL','ID','HI','GA','FL','DC','DE','CT','CO','CA','AR','AZ','AK','AL'];
 
     let setStateColor = (abbr, color) => {
-        document.getElementById(abbr).style.fill = color;
+        let element = document.getElementById(abbr);
+        if (element.tagName === "path") element.style.fill = color;
+        else element.style.backgroundColor = color;
     }
 
     let probToColorIntensity = prob => {
@@ -59,7 +61,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     }).catch(err => console.log(err));
 
     document.addEventListener("click", event => {
-        if (event.target.tagName !== "path"){
+        if (event.target.tagName !== "path" && !event.target.classList.contains("district")){
             document.getElementById("state-stats").style.display = "none";
         } else {
             let stateName = event.target.getAttribute("data-name");
