@@ -64,18 +64,16 @@ path:hover, .district:hover {
 
 .district {
     height: 60px;
+    line-height: 60px;
     width: 60px;
     border: 1px solid black;
     border-radius: 50%;
     vertical-align: middle;
-}
-
-.district>p{
     font-weight: bold;
     font-size: 15px;
     text-align: center;
 }
 
-.district>p:hover{
+.district:hover{
     color: white;
 }
