@@ -35,7 +35,11 @@ body {
     display: none;
     max-width: 90%;
     position: relative;
-    top: 100px;
+    top: 200px;
+}
+
+#state-stats > * {
+    margin-left: 10px;
 }
 
 a {
