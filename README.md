@@ -1,5 +1,9 @@
 # 538classic
 
-A simple webpage that displays the current forecast from 538's publicly-available 2020 presidential election model (https://projects.fivethirtyeight.com/2020-election-forecast/) in easy-to-read chloropleth form, with links to the 538 webpage for more information. Inspired by the way that fivethirtyeight's 2016 presidential election model was presented, this webpage formats this cycle's predictions in a similar fashion. The SVG code for the US map comes from https://simplemaps.com/resources/svg-us and can be freely distributed, including for commercial purposes.
+A simple webpage that displays Nate Silver's presidential election forecast (https://www.natesilver.net/p/nate-silver-2024-president-election-polls-model) in a chloropleth modeled on the FiveThirtyEight 2016 visualization style. The SVG code for the US map comes from https://simplemaps.com/resources/svg-us and can be freely distributed, including for commercial purposes.
 
-Fivethirtyeight's model data is scraped directly from https://github.com/fivethirtyeight/data/tree/master/election-forecasts-2020.
+I have redacted the URLs of the forecast .csv data for 2024, even though strictly speaking they are publicly exposed, because Nate has paywalled his forecast and I don't intend to provide a circumvention method. If you are subscribed to his forecast, you can find the URLs for these .csv files as follows:
+
+![](data-URLs.png)
+
+the destination of (1) should be nationalDataURL and the destination of (2) should be stateDataURL.

@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
     const stateAbbrs = [ 'WY','WI','WV','WA','VA','VT','UT','TX','TN','SD','SC','RI','PA','OR','OK',
     'OH','ND','NC','NY','NM','NJ','NH','NV','NE','NE-3','NE-2','NE-1','MT','MO','MS','MN','MI','MA','MD',
     'ME','ME-2','ME-1','LA','KY','KS','IA','IN','IL','ID','HI','GA','FL','DC','DE','CT','CO','CA','AR','AZ','AK','AL'];
-
+    const nationalDataURL = "[redacted]";
+    const stateDataURL = "[redacted]";
 
     let setStateColor = (abbr, color) => {
         let element = document.getElementById(abbr);
