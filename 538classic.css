@@ -89,3 +89,7 @@ path:hover, .district:hover {
 .district:hover{
     color: white;
 }
+
+path:hover{
+    fill-opacity: 0.75;
+}
