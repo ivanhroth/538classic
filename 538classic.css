@@ -27,7 +27,7 @@ body {
     color: purple;
 }
 
-#EV h3 {
+#EV h3, #pop h3 {
     display: inline;
     border: 1px solid black;
     background-color: white;

@@ -59,6 +59,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
         document.getElementById("trump-ev").innerHTML = Math.round(trumpStats[3]);
         document.getElementById("biden-ev").innerHTML = Math.round(bidenStats[3]);
         document.getElementById("kennedy-ev").innerHTML = Math.round(kennedyStats[3]);
+        document.getElementById("trump-pop").innerHTML = Math.round(trumpStats[4]);
+        document.getElementById("biden-pop").innerHTML = Math.round(bidenStats[4]);
+        document.getElementById("kennedy-pop").innerHTML = Math.round(kennedyStats[4]);
     }).catch(err => console.log(err));
 
     let trumpProbs = {};
