@@ -80,9 +80,11 @@ document.addEventListener("DOMContentLoaded", ()=> {
         });
         for (let i=0; i<stateNameList.length; i++){
             let trumpWinProb = trumpProbs[stateNameList[i]] / 100;
+            let bidenWinProb = bidenProbs[stateNameList[i]] / 100;
             if (!document.getElementById(stateAbbrs[i])) continue;
             else if (trumpWinProb > 0.5) setStateColor(stateAbbrs[i], `rgb(255, ${probToColorIntensity(trumpWinProb)}, ${probToColorIntensity(trumpWinProb)})`);
-            else if (trumpWinProb < 0.5) setStateColor(stateAbbrs[i], `rgb(${probToColorIntensity(1 - trumpWinProb)}, ${probToColorIntensity(1 - trumpWinProb)}, 255)`);
+            else if (bidenWinProb > 0.5) setStateColor(stateAbbrs[i], `rgb(${probToColorIntensity(bidenWinProb)}, ${probToColorIntensity(bidenWinProb)}, 255)`);
+            else setStateColor(stateAbbrs[i], `rgb(${probToColorIntensity(1 - trumpWinProb - bidenWinProb)}, 255, ${probToColorIntensity(1 - trumpWinProb - bidenWinProb)})`);
         }
     }).catch(err => console.log(err));
 
