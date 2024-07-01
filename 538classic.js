@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     'OH','ND','NC','NY','NM','NJ','NH','NV','NE','NE-3','NE-2','NE-1','MT','MO','MS','MN','MI','MA','MD',
     'ME','ME-2','ME-1','LA','KY','KS','IA','IN','IL','ID','HI','GA','FL','DC','DE','CT','CO','CA','AR','AZ','AK','AL'];
 
+
     let setStateColor = (abbr, color) => {
         let element = document.getElementById(abbr);
         if (element.tagName === "path") element.style.fill = color;
@@ -29,8 +30,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
     let showStateBox = stateName => {
         document.getElementById("state-stats").style.display = "block";
-        document.getElementById("state-trump-prob").innerHTML = `${Math.round(winProbs[stateName] * 1000) / 10}%`;
-        document.getElementById("state-biden-prob").innerHTML = `${Math.round((1 - winProbs[stateName]) * 1000) / 10}%`;
+        document.getElementById("state-trump-prob").innerHTML = `${Math.round(trumpProbs[stateName] * 10) / 10}%`;
+        document.getElementById("state-biden-prob").innerHTML = `${Math.round(bidenProbs[stateName] * 10) / 10}%`;
+        document.getElementById("state-kennedy-prob").innerHTML = `${Math.round((100 - trumpProbs[stateName] - bidenProbs[stateName]) * 10) / 10}%`;
         document.getElementById("state-name").innerHTML = stateName;
     }
 
@@ -38,33 +40,42 @@ document.addEventListener("DOMContentLoaded", ()=> {
         document.getElementById(stateAbbrs[i]).setAttribute("title", stateNameList[i]);
     }
 
-    fetch("https://projects.fivethirtyeight.com/2020-general-data/presidential_national_toplines_2020.csv").then(res => {
-        if(!res.ok) throw new Error("Problem retrieving national data from FiveThirtyEight.com");
+    fetch(nationalDataURL).then(res => {
+        if(!res.ok) throw new Error("Problem retrieving national data");
         else return res;
     }).then(res => res.text()).then(data => {
-        let currentNat = data.split("\n")[1].split(",");
-        let trumpWinProb = currentNat[7];
-        let bidenWinProb = currentNat[8];
-        document.getElementById("trump-prob").innerHTML = `${Math.round(1000 * trumpWinProb) / 10}%`;
-        document.getElementById("biden-prob").innerHTML = `${Math.round(1000 * bidenWinProb) / 10}%`;
-        document.getElementById("trump-ev").innerHTML = Math.round(currentNat[14]);
-        document.getElementById("biden-ev").innerHTML = Math.round(currentNat[15]);
+        let dataRows = data.split("\n");
+        console.log(dataRows);
+        let trumpStats = (dataRows[2]).split(",");
+        let bidenStats = (dataRows[1]).split(",");
+        let kennedyStats = (dataRows[3]).split(",");
+        let trumpWinProb = trumpStats[1];
+        let bidenWinProb = bidenStats[1];
+        let kennedyWinProb = kennedyStats[1];
+        document.getElementById("trump-prob").innerHTML = `${Math.round(10 * trumpWinProb) / 10}%`;
+        document.getElementById("biden-prob").innerHTML = `${Math.round(10 * bidenWinProb) / 10}%`;
+        document.getElementById("kennedy-prob").innerHTML = `${Math.round(10 * kennedyWinProb) / 10}%`;
+        document.getElementById("trump-ev").innerHTML = Math.round(trumpStats[3]);
+        document.getElementById("biden-ev").innerHTML = Math.round(bidenStats[3]);
+        document.getElementById("kennedy-ev").innerHTML = Math.round(kennedyStats[3]);
     }).catch(err => console.log(err));
 
-    let winProbs = {};
+    let trumpProbs = {};
+    let bidenProbs = {};
 
-    fetch("https://projects.fivethirtyeight.com/2020-general-data/presidential_state_toplines_2020.csv").then(res => {
-        if(!res.ok) throw new Error("Problem retrieving state data from FiveThirtyEight.com");
+    fetch(stateDataURL).then(res => {
+        if(!res.ok) throw new Error("Problem retrieving state data");
         else return res;
     }).then(res => res.text()).then(data => {
         let upToDateRows = data.split("\n").slice(1, 57);
         upToDateRows = upToDateRows.map(row => row.split(","));
         upToDateRows.forEach(row => {
-            let stateName = row[7];
-            winProbs[stateName] = row[10];
+            let stateName = row[4];
+            trumpProbs[stateName] = row[2];
+            bidenProbs[stateName] = row[1];
         });
         for (let i=0; i<stateNameList.length; i++){
-            let trumpWinProb = winProbs[stateNameList[i]];
+            let trumpWinProb = trumpProbs[stateNameList[i]] / 100;
             if (!document.getElementById(stateAbbrs[i])) continue;
             else if (trumpWinProb > 0.5) setStateColor(stateAbbrs[i], `rgb(255, ${probToColorIntensity(trumpWinProb)}, ${probToColorIntensity(trumpWinProb)})`);
             else if (trumpWinProb < 0.5) setStateColor(stateAbbrs[i], `rgb(${probToColorIntensity(1 - trumpWinProb)}, ${probToColorIntensity(1 - trumpWinProb)}, 255)`);
@@ -80,7 +91,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         }
     })
 
-    document.addEventListener("click", event => {
+/*     document.addEventListener("click", event => {
         if (event.target.tagName === "path" || event.target.classList.contains("district")){
             let stateName = event.target.getAttribute("data-name");
             let urlStateName = stateName.toLowerCase();
@@ -88,5 +99,5 @@ document.addEventListener("DOMContentLoaded", ()=> {
             urlStateName = urlStateName.split(" ").join("-");
             open(`https://projects.fivethirtyeight.com/2020-election-forecast/${urlStateName}/`);
         }
-    })
+    }) */
 })

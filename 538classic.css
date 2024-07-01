@@ -23,6 +23,10 @@ body {
     color: blue;
 }
 
+.Indy {
+    color: purple;
+}
+
 #EV h3 {
     display: inline;
     border: 1px solid black;
