@@ -1,7 +1,7 @@
 body {
     background-color: cornsilk;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 1fr;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 #EV h3, #pop h3 {
-    display: inline;
+    display: inline-block;
     border: 1px solid black;
     background-color: white;
 }
@@ -80,6 +80,10 @@ path:hover, .district:hover {
     font-weight: bold;
     font-size: 15px;
     text-align: center;
+}
+
+#NE-1 {
+    margin-left: 20px;
 }
 
 .district:hover{
